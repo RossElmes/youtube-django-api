@@ -10,7 +10,7 @@ services:
     name: youtubeplayer_django_api
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "python -m gunicorn youtubeplayer.asgi:application -k uvicorn.workers.UvicornWorker"
+    startCommand: "python -m gunicorn youtube_djago_api.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
