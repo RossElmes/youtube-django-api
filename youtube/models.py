@@ -33,8 +33,8 @@ class MatchDetail(models.Model):
 
 class MatchClip(models.Model):
     match = models.ForeignKey(MatchDetail, related_name='match',on_delete=models.CASCADE)
-    start_time = models.DecimalField(max_digits=5, decimal_places=2)
-    end_time = models.DecimalField(max_digits=5, decimal_places=2)
+    start_time = models.DecimalField(max_digits=10, decimal_places=2)
+    end_time = models.DecimalField(max_digits=10, decimal_places=2)
     name = models.CharField(max_length=100)
 
     def __str__(self):
