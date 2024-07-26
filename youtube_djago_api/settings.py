@@ -22,13 +22,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'django-insecure-xui5x7x5r8*b10ct$9%mmzv_^(6bd9#xj85g2fce&$17p26%hv'
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-xui5x7x5r8*b10ct$9%mmzv_^(6bd9#xj85g2fce&$17p26%hv'
+#SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG','False') == 'True'
+#DEBUG = os.environ.get('DEBUG','False') == 'True'
+DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(',')
+#ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(',')
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'youtube',
+    'django_filters'
 
 ]
 
@@ -84,8 +87,8 @@ WSGI_APPLICATION = 'youtube_djago_api.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default=os.environ.get('DATABASE_URL'),
-        #default='postgres://postgres:postgres@localhost:5432/youtubedjangoapi',
+        #default=os.environ.get('DATABASE_URL'),
+        default='postgres://postgres:postgres@localhost:5432/youtubedjangoapi',
         conn_max_age=600
        
     )
