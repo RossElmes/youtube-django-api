@@ -14,5 +14,8 @@ then
     python manage.py createsuperuser --no-input 
 fi
 
+python manage.py makemigrations
+
+
 # Apply any outstanding database migrations
 python manage.py migrate
