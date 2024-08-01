@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from .models import *
 from .serializers import *
-from .filters import MatchClipFilter
+from .filters import MatchClipFilter,PlaylistClipFilter
 from django_filters import rest_framework as filters
 
 # Create your views here.
@@ -23,7 +23,13 @@ class PlaylistViewSet(viewsets.ModelViewSet):
 
 class PlaylistClipsViewSet(viewsets.ModelViewSet):
     queryset = PlaylistClips.objects.all()
-    serializer_class = PlaylistClipsSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_class = PlaylistClipFilter
+
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return PlaylistClipCreateSerializer
+        return PlaylistClipsSerializer
 
 
 class CodesViewSet(viewsets.ModelViewSet):

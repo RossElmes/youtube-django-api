@@ -48,8 +48,9 @@ class Playlist(models.Model):
 
 
 class PlaylistClips(models.Model):
-    clip_id = models.ForeignKey(MatchClip, related_name='clips', on_delete=models.CASCADE)
+    clip = models.ForeignKey(MatchClip, related_name='clips', on_delete=models.CASCADE)
     playlist = models.ForeignKey(Playlist, related_name='playlists', on_delete=models.CASCADE)
+    video_id = models.CharField(max_length=11)
     
     def __str__(self):
         return f"{self.playlist} at {self.clip}"
